@@ -18,8 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/transaction',[TransactionController::class,'create'])->name('transaction');
+Route::post('/transaction',[App\Http\Controllers\TransactionController::class,'create'])->name('transaction');
 
-Route::get('/transaction',[TransactionController::class, 'index'])->name('all-transactions');
-Route::get('/transaction/{transaction}',[TransactionController::class, 'show'])->name('get-transactions');
-Route::delete('/transaction/{transaction}',[TransactionController::class, 'delete'])->name('delete-transaction');
+Route::get('/transaction',[App\Http\Controllers\TransactionController::class, 'index'])->name('all-transactions');
+Route::get('/transaction/{transaction}',[App\Http\Controllers\TransactionController::class, 'show'])->name('get-transactions');
+Route::delete('/transaction/{transaction}',[App\Http\Controllers\TransactionController::class, 'delete'])->name('delete-transaction');

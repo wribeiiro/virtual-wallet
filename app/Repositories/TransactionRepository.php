@@ -5,7 +5,7 @@ namespace App\Repositories;
 use App\Exceptions\AuthorizeServiceUnavailableException;
 use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
-use App\Services\{AuthorizeTransactionService, NotificationService,, TransactionValidationService};
+use App\Services\{AuthorizeTransactionService, NotificationService, TransactionValidationService};
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\DB;
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\TransactionPostRequest;
+use App\Http\Requests\TransactionRequest;
 use App\Http\Resources\TransactionCollection;
 use App\Http\Resources\TransactionResource;
 use App\Models\Transaction;
@@ -25,7 +25,7 @@ class TransactionController extends Controller
     {
         return new TransactionCollection($this->transactionRepository->listAllTransaction());
     }
-    public function create(TransactionPostRequest $request)
+    public function create(TransactionRequest $request)
     {
         $payload = [
                 'payer_id' => $request->payer,

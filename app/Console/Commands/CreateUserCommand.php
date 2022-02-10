@@ -13,7 +13,7 @@ class CreateUserCommand extends Command
      *
      * @var string
      */
-    protected $signature = "user:create {--t|type=: choose the profile type (1 - client \n 2 - shopkeeper)}";
+    protected $signature = 'user:create {type : 1 - cliente ; 2 - shopkeeper}';
 
     /**
      * The console command description.
@@ -40,11 +40,11 @@ class CreateUserCommand extends Command
     public function handle()
     {
         $user = User::factory()->create();
-        $user->profile = (int) $this->option('type') === 1 
+        $user->profile = $this->argument('type') == 1 
             ? 'client' 
             : 'shopkeeper';
         $user->save();
 
-        $this->info("Created user: {$user->email} \n Usertype: {$user->profile}");
+        $this->info("Created user: {$user->email} \nUsertype: {$user->profile}");
     }
 }

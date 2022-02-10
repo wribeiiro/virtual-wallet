@@ -3,7 +3,7 @@
 namespace App\Services;
 
 use App\Models\Account;
-use App\Exceptions\{InsufficientCashException,, ShopkepperMakeTransactionException};
+use App\Exceptions\{InsufficientCashException, ShopkepperMakeTransactionException};
 use App\Repositories\{AccountRepository, UserRepository};
 
 class TransactionValidationService
