@@ -17,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('/transaction',[TransactionController::class,'create'])->name('transaction');
+
+Route::get('/transaction',[TransactionController::class, 'index'])->name('all-transactions');
+Route::get('/transaction/{transaction}',[TransactionController::class, 'show'])->name('get-transactions');
+Route::delete('/transaction/{transaction}',[TransactionController::class, 'delete'])->name('delete-transaction');
