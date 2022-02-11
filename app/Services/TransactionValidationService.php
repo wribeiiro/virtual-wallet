@@ -32,9 +32,14 @@ class TransactionValidationService
         }
     }
 
-    private function validateCheckBalance($user, $value): void
+    private function validateCheckBalance(int $user, float $value): void
     {
         $account  = Account::where('user_id', $user)->first();
+
+        if (!$account) {
+            throw new \Exception('Account not found for this user!');
+        }
+
         if (!$this->accountRepository->checkAccountBalance($account, $value)) {
             throw new InsufficientCashException('The user dont have money to make the transaction', 422);
         }

@@ -25,18 +25,19 @@ class TransactionController extends Controller
     {
         return new TransactionCollection($this->transactionRepository->listAllTransaction());
     }
+
     public function create(TransactionRequest $request)
     {
         $payload = [
-                'payer_id' => $request->payer,
-                'payee_id' => $request->payee,
-                'value' => $request->value
+            'payer_id' => $request->payer,
+            'payee_id' => $request->payee,
+            'value' => $request->value
         ];
+
         try {
-            $transaction = $this->transactionRepository->creteTransaction($payload);
-            return new TransactionResource($transaction);
+            return new TransactionResource($this->transactionRepository->creteTransaction($payload));
         } catch (\Exception $exception) {
-            return response()->json(['errors' => ['message' => $exception->getMessage()]], $exception->getCode());
+            return response()->json(['errors' => ['message' => $exception->getMessage()]], 500);
         }
     }
 
